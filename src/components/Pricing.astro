@@ -83,14 +83,14 @@ const plans = [
                   )}
                 </div>
               </td>
-              <td class="px-5 py-4 tabular-nums text-muted-foreground">{plan.vcpu}</td>
-              <td class="px-5 py-4 tabular-nums text-muted-foreground">{plan.ram}</td>
-              <td class="px-5 py-4 tabular-nums text-muted-foreground">{plan.storage}</td>
-              <td class="px-5 py-4 tabular-nums text-muted-foreground">{plan.transfer}</td>
+              <td class="px-5 py-4 font-mono text-muted-foreground">{plan.vcpu}</td>
+              <td class="px-5 py-4 font-mono text-muted-foreground">{plan.ram}</td>
+              <td class="px-5 py-4 font-mono text-muted-foreground">{plan.storage}</td>
+              <td class="px-5 py-4 font-mono text-muted-foreground">{plan.transfer}</td>
               <td class="px-5 py-4 text-muted-foreground">{plan.support}</td>
               <td class="px-5 py-4 text-right">
                 {plan.price !== null ? (
-                  <span class="font-semibold">${plan.price}<span class="text-xs font-normal text-muted-foreground">/mo</span></span>
+                  <span class="font-mono font-semibold">${plan.price}<span class="text-xs font-normal text-muted-foreground">/mo</span></span>
                 ) : (
                   <span class="text-sm text-muted-foreground">Contact us</span>
                 )}
@@ -128,12 +128,12 @@ const plans = [
               )}
             </div>
             {plan.price !== null ? (
-              <span class="text-lg font-bold">${plan.price}<span class="text-xs font-normal text-muted-foreground">/mo</span></span>
+              <span class="font-mono text-lg font-bold">${plan.price}<span class="text-xs font-normal text-muted-foreground">/mo</span></span>
             ) : (
               <span class="text-sm text-muted-foreground">Custom</span>
             )}
           </div>
-          <div class="mt-4 grid grid-cols-2 gap-2 text-sm text-muted-foreground">
+          <div class="mt-4 grid grid-cols-2 gap-2 font-mono text-sm text-muted-foreground">
             <span>{plan.vcpu} vCPU</span>
             <span>{plan.ram} RAM</span>
             <span>{plan.storage} SSD</span>
