@@ -39,14 +39,14 @@ const faqs = [
 
       <div class="divide-y">
         {faqs.map((faq) => (
-          <details class="group -mx-3 rounded-md px-3 py-4 transition-colors hover:bg-muted/50">
-            <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-medium">
+          <details class="group">
+            <summary class="-mx-3 flex cursor-pointer items-center justify-between gap-4 rounded-md px-3 py-4 text-sm font-medium transition-colors hover:bg-muted/50">
               {faq.question}
               <svg class="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>
             </summary>
-            <p class="mt-3 text-sm text-muted-foreground pr-8">
+            <p class="pb-4 text-sm text-muted-foreground pr-8">
               {faq.answer}
             </p>
           </details>
