@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const ipv4 = [
+  '23.152.236.0/24',
+];
+
+const ipv6 = [
+  '2602:FE18::/40',
+];
+---
+
+<Layout title="IP Ranges - Takoyaki Cloud" description="Takoyaki Cloud IP address ranges for firewall and allowlist configuration.">
+  <section class="border-b py-20">
+    <div class="mx-auto max-w-2xl px-6">
+      <p class="text-sm font-medium text-rose-500">Network</p>
+      <h1 class="mt-2 text-3xl font-bold tracking-tight">IP Ranges</h1>
+      <p class="mt-3 text-sm text-muted-foreground">
+        Takoyaki Cloud IP address ranges. Use these to configure firewalls, allowlists, or security groups.
+      </p>
+
+      <div class="mt-10 space-y-8">
+        <div>
+          <h2 class="text-sm font-medium uppercase tracking-wider text-muted-foreground">IPv4</h2>
+          <div class="mt-3 rounded-lg border bg-muted/30 p-4">
+            <pre class="text-sm tabular-nums">{ipv4.join('\n')}</pre>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-medium uppercase tracking-wider text-muted-foreground">IPv6</h2>
+          <div class="mt-3 rounded-lg border bg-muted/30 p-4">
+            <pre class="text-sm tabular-nums">{ipv6.join('\n')}</pre>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-8 text-sm text-muted-foreground">
+        This page is kept up to date as ranges change. Every VPS is assigned a dedicated IPv4 address and a /64 IPv6 subnet from these blocks.
+      </p>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,57 @@
+---
+const faqs = [
+  {
+    question: 'What operating systems are available?',
+    answer: 'Ubuntu, Debian, CentOS, Rocky Linux, and more. You can also upload custom ISO images.',
+  },
+  {
+    question: 'What IP addresses do I get?',
+    answer: 'Every VPS comes with a dedicated IPv4 address and a /64 IPv6 subnet. See our full IP ranges at /ips.',
+  },
+  {
+    question: 'Can I upgrade my plan later?',
+    answer: 'Yes. Upgrade at any time with minimal downtime. The difference is prorated for the rest of your billing cycle.',
+  },
+  {
+    question: 'Are there setup fees?',
+    answer: 'No. Zero setup fees. Your VPS is provisioned within minutes of payment.',
+  },
+  {
+    question: 'How does bandwidth billing work?',
+    answer: 'Every VPS includes 1 TB of free outbound bandwidth per month. Beyond that, additional bandwidth is $10/TB. Inbound traffic is always free.',
+  },
+  {
+    question: 'What support is included?',
+    answer: 'All plans include 24/7 support from real engineers. Performance and Enterprise plans get priority response times.',
+  },
+];
+---
+
+<section id="faq" class="border-b py-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-[280px_1fr]">
+      <div>
+        <p class="text-sm font-medium text-rose-500">FAQ</p>
+        <h2 class="mt-2 text-2xl font-bold tracking-tight">
+          Common questions
+        </h2>
+      </div>
+
+      <div class="divide-y">
+        {faqs.map((faq) => (
+          <details class="group -mx-3 rounded-md px-3 py-4 transition-colors hover:bg-muted/50">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-medium">
+              {faq.question}
+              <svg class="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-sm text-muted-foreground pr-8">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const navLinks = [
+  { label: 'Features', href: '/#features' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'FAQ', href: '/#faq' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header class="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-md">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+    <a href="/" class="flex items-center gap-2">
+      <svg class="h-6 w-6 text-rose-500" viewBox="0 0 24 24" fill="none">
+        <mask id="cloud-cutout">
+          <path d="M6.5 19h12a4 4 0 100-8h-.2A6 6 0 006.1 8.6 5 5 0 006.5 19z" fill="white" />
+          <circle cx="11.5" cy="13" r="3" fill="black" />
+        </mask>
+        <path d="M6.5 19h12a4 4 0 100-8h-.2A6 6 0 006.1 8.6 5 5 0 006.5 19z" fill="currentColor" mask="url(#cloud-cutout)" />
+      </svg>
+      <span class="text-base font-semibold tracking-tight">
+        Takoyaki <span class="text-rose-500">Cloud</span>
+      </span>
+    </a>
+
+    <div class="hidden items-center gap-6 md:flex">
+      {navLinks.map((link) => (
+        <a href={link.href} class="text-sm text-muted-foreground transition-colors hover:text-foreground">
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <div class="flex items-center gap-2">
+      <ThemeToggle />
+      <a
+        href="/#pricing"
+        class="hidden h-8 items-center rounded-md bg-rose-500 px-4 text-sm font-medium text-white transition-colors hover:bg-rose-600 sm:inline-flex"
+      >
+        Get Started
+      </a>
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        class="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted md:hidden"
+        aria-label="Toggle menu"
+      >
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="hidden border-t bg-background px-6 py-4 md:hidden">
+    <div class="flex flex-col gap-3">
+      {navLinks.map((link) => (
+        <a href={link.href} class="text-sm text-muted-foreground">{link.label}</a>
+      ))}
+      <a href="/#pricing" class="mt-1 inline-flex h-8 items-center justify-center rounded-md bg-rose-500 px-4 text-sm font-medium text-white hover:bg-rose-600">
+        Get Started
+      </a>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>
