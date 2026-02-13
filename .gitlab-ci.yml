@@ -1,0 +1,30 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  IMAGE: ${CI_REGISTRY_IMAGE}
+  TAG: ${CI_COMMIT_SHORT_SHA}
+
+build:
+  stage: build
+  script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - docker build -t "$IMAGE:$TAG" -t "$IMAGE:latest" .
+    - docker push "$IMAGE:$TAG"
+    - docker push "$IMAGE:latest"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
+deploy:
+  stage: deploy
+  needs:
+    - build
+  script:
+    - docker pull "$IMAGE:latest"
+    - docker stop cloud-takoyaki-io 2>/dev/null || true
+    - docker rm cloud-takoyaki-io 2>/dev/null || true
+    - docker run -d --name cloud-takoyaki-io --restart unless-stopped -p 127.0.0.1:3100:80 "$IMAGE:latest"
+    - docker image prune -f
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
